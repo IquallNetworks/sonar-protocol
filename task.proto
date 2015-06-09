@@ -1,0 +1,92 @@
+package progprobe;
+
+option java_package = "net.iquall.protobuff";
+option java_outer_classname = "ProgProbe";
+
+message Report {
+
+ optional string imei = 1;
+ optional int64 program_id = 2;
+ optional int64 execution_id = 3;
+ optional string timestamp = 4;
+ optional ReportType type = 5;
+ repeated string arg = 6;
+
+ enum ReportType {
+
+  SMS_IN = 0;
+  SMS_OUT = 1;
+  USSD_IN = 2;
+  USSD_OUT = 3;
+  DOWNLOAD_RATE = 4;
+  UPLOAD_RATE = 5; 
+  BEGIN = 6;
+  END = 7;
+  ERROR = 8;
+  INFO = 9;
+  TIME_DIFF = 10;
+  SCRIPT_ERROR = 11;
+  SCRIPT_CANCELATION = 12;
+  PING = 13;
+  DNS_LOOKUP = 14;
+  PROBE_STATE = 15;
+
+ }
+
+}
+
+message ScriptParameter {
+
+ optional string name = 1;
+ optional string value = 2;
+
+}
+
+message Program {
+
+ optional string name = 1;
+ optional bytes code = 2;
+ optional int32 id = 3;
+ repeated ScriptParameter parameters = 4;
+
+}
+
+message Task {
+
+ optional Program program = 1;
+ optional int64 task_id = 2;
+ optional int32 start_date = 3;
+ optional int32 valid_until = 4;
+ optional int32 priority = 5;
+
+}
+
+message TaskList {
+
+ repeated Task task = 1;
+
+}
+
+message ProbeCommand {
+
+ optional CommandType command = 1;
+ repeated string arg = 2;
+
+ enum CommandType {
+
+  DELETE_TASK = 0;
+
+ }
+
+}
+
+message HeartbeatResponse {
+
+ optional TaskList taskList = 1;
+ optional bool registered = 2;
+ optional string tenantData = 3;
+ optional bool enabled = 4;
+ optional string OBSOLETE_command = 5;
+ repeated ProbeCommand command = 6;
+
+}
