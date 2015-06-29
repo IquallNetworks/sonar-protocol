@@ -14,4 +14,4 @@ The great potential of the tool consists in allowing the operators to program th
 
 Furthermore, the administration interface provides a set of screens and charts that offer a clear view of the results of the tests and the network parameters in real time during the test sequence. From this interface it is also possible to remotely manage the tests carried out in each device, establish their order and repetition, assess the results obtained and establish KPIs and alarms, among other functionalities. 
 
-More info on how to use this protocol can be found on the wiki
+More info on how to use this protocol can be found on the [wiki](https://github.com/IquallNetworks/sonar-protocol/wiki/How-to-use-Sonar-Protocol)
